@@ -140,7 +140,7 @@
     }
 
     /* Media queries for responsiveness */
-    @media (max-width: 768px) {
+    @media (max-width : 768px) {
       .container {
         padding: 15px;
         width: 80%;
@@ -154,7 +154,7 @@
       }
     }
   </style>
-</head >
+</head>
 <body>
   <div class="parent"><div class="container">
     <img src="/360_F_347470522_q2osNSeRJeUZkEY8NgJbIwopBsNKVXhC.jpg" alt="Avatar" class="avatar">
@@ -262,34 +262,12 @@
           }
         }).showToast();
       } finally {
-        // Re-enable the submit button and reset text
+        // Re -enable the submit button and reset text
         submitButton.disabled = false;
         submitButton.textContent = 'SEND';
         isSubmitting = false;
       }
     });
-
-    // Add cooldown period for form submission
-    function debounce(func, wait) {
-      let timeout;
-      return function executedFunction(...args) {
-        const later = () => {
-          clearTimeout(timeout);
-          func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-      };
-    }
-
-    // Wrap the form submission in a debounce function
-    const debouncedSubmit = debounce((e) => {
-      form.dispatchEvent(new Event('submit'));
-    }, 1000); // 1 second cooldown
-
-    // Add event listener for the submit button
-    const submitButton = form.querySelector('button[type="submit"]');
-    submitButton.addEventListener('click', debouncedSubmit);
   </script>
 </body>
 </html>
